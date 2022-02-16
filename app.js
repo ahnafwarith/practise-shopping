@@ -4,6 +4,10 @@ function updateTotal() {
     const inputCase = document.getElementById('case-input').value;
     const subTotal = document.getElementById('sub-total');
     subTotal.innerText = parseFloat(inputPhone) * 1219 + parseFloat(inputCase) * 59;
+    const subTotalFinal = parseFloat(subTotal.innerText);
+    const taxTotal = document.getElementById('tax-total');
+    taxTotal.innerText = subTotalFinal / 10;
+    document.getElementById('total-price').innerText = parseFloat(subTotal.innerText) + parseFloat(taxTotal.innerText);
 }
 
 //increase decrease function
