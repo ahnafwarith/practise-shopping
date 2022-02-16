@@ -1,27 +1,37 @@
-function updateCase(product, isIncreasing, price) {
-    const caseInput = document.getElementById(product + '-input');
-    let caseInputValue = caseInput.value;
-    if (isIncreasing == true) {
-        caseInputValue = parseInt(caseInputValue) + 1;
-    }
-    else if (isIncreasing == false && caseInput.value > 0) {
-        caseInputValue = parseInt(caseInputValue) - 1;
-    }
-    caseInput.value = caseInputValue;
-    const caseNumber = document.getElementById(product + '-number')
-    caseNumber.innerText = caseInputValue * price;
+//updating the total text function
+function updateTotal() {
+    const inputPhone = document.getElementById('phone-input').value;
+    const inputCase = document.getElementById('case-input').value;
+    const subTotal = document.getElementById('sub-total');
+    subTotal.innerText = parseFloat(inputPhone) * 1219 + parseFloat(inputCase) * 59;
 }
 
+//increase decrease function
+function updateProduct(product, isIncreasing, price) {
+    const productInput = document.getElementById(product + '-input');
+    let productInputValue = productInput.value;
+    if (isIncreasing == true) {
+        productInputValue = parseInt(productInputValue) + 1;
+    }
+    else if (isIncreasing == false && productInput.value > 0) {
+        productInputValue = parseInt(productInputValue) - 1;
+    }
+    productInput.value = productInputValue;
+    const productNumber = document.getElementById(product + '-number')
+    productNumber.innerText = productInputValue * price;
+    updateTotal()
+}
+//updating increase decrease in phone
 document.getElementById('phone-plus').addEventListener('click', function () {
-    updateCase(phone, true, 1219);
+    updateProduct("phone", true, 1219);
 })
 document.getElementById('phone-minus').addEventListener('click', function () {
-    updateCase(phone, false, 1219);
+    updateProduct("phone", false, 1219);
 })
-
+//updating increase decrease in case
 document.getElementById('case-plus').addEventListener('click', function () {
-    updateCase(case, true, 59);
+    updateProduct('case', true, 59);
 })
 document.getElementById('case-minus').addEventListener('click', function () {
-    updateCase(case, false, 59);
+    updateProduct('case', false, 59);
 })
